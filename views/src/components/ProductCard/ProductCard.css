@@ -1,0 +1,26 @@
+#prod_img {
+    height: 450px;
+    width: 450px;
+    border: 2px solid turquoise; 
+  }
+    
+  .product-card-info-container {
+    display: flex;
+    flex-direction: column;
+    margin:80px;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid turquoise;
+    background-color: black;
+    border-radius:30px;
+  }
+  
+  .product-card-info {
+    text-align: center;
+    color: turquoise
+  }
+  
+  #view {
+    color: black;
+    background-color: turquoise;
+  }

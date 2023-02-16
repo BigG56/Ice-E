@@ -1,0 +1,57 @@
+.form {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 40px;
+}
+.formComp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    
+.formWrapper {
+    margin:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    width:300px;
+    background-color: white;
+    box-shadow: 0 0 1.5rem rgba(105, 105, 105, 0.5);
+    border-radius: 4px;
+}
+    
+.baseFormHeader {
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 2em;
+    font-weight: normal;
+    background-color: black;
+    color:turquoise;
+    border-radius: 20px;
+}
+    
+.baseForm {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+    
+.social-btn-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5%;
+}
+    
+#google-btn {
+    background-color: #DB4437;
+    color: #FFFFFF
+}
+  
+#reg_button {
+    border: 2px solid gold;
+    margin: auto;
+    background-color:  purple;
+    color: gold;
+}
