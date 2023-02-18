@@ -4,6 +4,7 @@ const loaders = require('./loaders');
 const { PORT } = require('./config');
 
 async function startServer() {
+    
     loaders(app);
 
     app.listen(PORT, () => {

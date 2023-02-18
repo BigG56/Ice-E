@@ -22,14 +22,26 @@ export const register = async (data) => {
     }
 }
 
-export const logout = async () => {
-    try {
-      const response = await API.get('auth/logout');
-  
-      return response.data;
-  
-    } catch(err) {
-      throw err.response.data;
-    }
+export const isLoggedIn = async (userId) => {
+  try {
+    const response = await API.get(`users/${userId}`);
+
+    return response.data;
+
+  } catch(err) {
+    throw err.response.data;
   }
+}
+
+export const googleLogin = async () => {
+  try {
+    const response = await API.get('auth/google');
+    console.log(response)
+
+    return response.data;
+
+  } catch(err) {
+    throw err.response.data;
+  }
+}
   

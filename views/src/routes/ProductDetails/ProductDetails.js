@@ -19,6 +19,7 @@ function ProductDetails() {
 
   const dispatch = useDispatch();
   const products = useSelector(state => state.products);
+  const { loggedIn } = useSelector(state => state.auth);
   
   const product = products[productId];
 
@@ -56,16 +57,18 @@ function ProductDetails() {
           <>
             <Typography style={{fontFamily:'Rightous, cursive', textDecoration: 'underline'}} variant="h3">{product?.name}</Typography>
             <Typography variant="h6">{product?.description}</Typography>
-            <Typography variant="h6">£<b>{product?.price}</b></Typography>
+            <Typography className='price' variant="h2">£<b>{product?.price}</b></Typography>
+            { loggedIn &&
             <div className='buttons'>          
-              <Button type="contained" id='view' color="primary">Add to Cart</Button>
               <Incrementer
                 onDecrement={handleDecrement}
                 onIncrement={handleIncrement}
                 value={quantity}
               />
+              <Button type="contained" id='view' color="primary">Add to Cart</Button>
               <Button type="contained" id='view' component={Link} to ='/products' color="primary">Back</Button>
             </div>
+            } 
           </>
         }
       </div>

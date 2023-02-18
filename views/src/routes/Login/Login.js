@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Buttons from '../../components/Button/Button';
 import TextFields from '../../components/TextField/TextField';
@@ -12,9 +12,10 @@ import { loginUser } from '../../store/auth/Auth.actions';
 import * as Yup from 'yup';
 
 const Login = () => {
-  const history = useNavigate();
   const dispatch = useDispatch();
-  const { error } = useSelector(state => state.auth);
+  const {error} = useSelector(state => state.auth);
+  const user = useSelector(state => state.user);
+  const { loggedIn } = useSelector(state => state.auth);
   const [isLoading, setIsLoading] = useState(false);
 
   // Login handler
@@ -23,7 +24,6 @@ const Login = () => {
       setIsLoading(true);
       await dispatch(loginUser(credentials));
       setIsLoading(false);
-      history('/');
     } catch(err) {
       setIsLoading(false);
     }
@@ -37,6 +37,10 @@ const Login = () => {
     password: Yup.string()
       .required("Password is required")
   })
+
+  const googleLogin = () => {
+    window.open('http://localhost:8000/home/auth/google', '_self')
+  }
 
   return (
     <div className="app">
@@ -70,17 +74,21 @@ const Login = () => {
                 error && <div>{error}</div>
               }
               <Buttons variant="contained" color="primary" type="submit" isLoading={isLoading}>Submit</Buttons>
-              <p>Forgotten your password?</p>
+              <Buttons id="reg_button" component={Link} to='/auth/register'>Register</Buttons>
+              <p style={{textAlign: 'center'}}>Forgotten your password?</p>
               <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
-                <p>Sign in with</p>
+                <p>Sign in with...</p>
               </div>
               <div className="social-btn-container">
-                <Buttons variant="contained" id="google-btn" href="/api/auth/google">Google</Buttons>
+                <Buttons variant="contained" id="google-btn" onClick={googleLogin}>Google</Buttons>
               </div>
             </Form>
           </Formik>
         </div>
       </div>
+      { loggedIn &&
+        <Navigate to={`/users/${user.id}`}/>
+      }
     </div>
   );
 }

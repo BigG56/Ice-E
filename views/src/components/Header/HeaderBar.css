@@ -1,0 +1,20 @@
+.head {
+    border: 2px solid turquoise;
+    background-color:black;
+    color:turquoise;
+}
+.header-bar {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 40px;
+    border:2px solid turquoise;
+    border-radius: 20px;
+    font-family: Rightous, cursive;
+    background-color: turquoise;
+    color: black;
+}

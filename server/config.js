@@ -8,5 +8,10 @@ module.exports = {
       PGPASSWORD: process.env.PGPASSWORD,
       PGPORT: process.env.PGPORT
     },
+    GOOGLE: {
+      CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL,
+      CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+      CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET
+    },
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
   }

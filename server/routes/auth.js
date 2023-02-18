@@ -5,6 +5,8 @@ const { hashPassword } = require('../utils/bcrypt');
 // Instantiate Services
 const AuthService = require('../services/AuthService');
 const AuthServiceInstance = new AuthService();
+const UserService = require('../services/UserService');
+const UserServiceInstance = new UserService();
 
 module.exports = (app, passport) => {
 
@@ -34,18 +36,29 @@ module.exports = (app, passport) => {
       const { email, password } = req.body;
     
       const response = await AuthServiceInstance.login({ email, password});
-      req.session.user = response
-      console.log(req.session.user)
+      console.log(response);
       res.status(200).json(response);
     } catch(err) {
       next(err);
     }
   });
 
-  router.post('/logout', function(req, res, next){
-    req.session.delete(function(err) {
+  router.get('/logout', function(req, res, next){
+    req.logout(function(err) {
       if (err) { return next(err); }
-      res.redirect('/login');
+      res.redirect('http://localhost:3000/home');
     });
   });
+
+  // Google Login Endpoint
+  router.get('/google', passport.authenticate('google', { scope: ["profile"] } ));
+
+  // Google Login Callback Endpoint
+  router.get('/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login/failure'}),
+    async (req, res) => {
+      console.log(req.user)
+      res.redirect(`http://localhost:3000/home/users/${req.user.id}`);
+    }
+    );
 }

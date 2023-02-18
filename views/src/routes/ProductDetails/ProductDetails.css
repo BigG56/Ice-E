@@ -9,6 +9,13 @@
     margin:10px;
     border-radius:10px;
 }
+.price {
+    border:2px solid black;
+    border-radius:20px;
+    background-color:turquoise;
+    color:black;
+
+}
 
 .prodImg {
     height: 300px;

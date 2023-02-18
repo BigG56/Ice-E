@@ -4,6 +4,9 @@ const AuthService = require('../services/AuthService');
 const AuthServiceInstance = new AuthService();
 const UserService = require('../services/UserService');
 const UserServiceInstance = new UserService();
+const { GOOGLE } = require('../config');
+const GoogleStrategy = require('passport-google-oauth20').Strategy
+
 
 
 module.exports = (app) => {
@@ -11,11 +14,12 @@ module.exports = (app) => {
     app.use(passport.session());
 
     passport.serializeUser((user, done) => {
-        done(null, user);
+        done(null, user.id);
     });
 
     passport.deserializeUser((id, done) => {
         UserServiceInstance.get(id, function(err, user) {
+            console.log(id);
           done(err, user);
         });
     });
@@ -33,6 +37,21 @@ module.exports = (app) => {
                 return done(err);
             }
         }
+    ));
+
+    passport.use(new GoogleStrategy({
+        clientID: GOOGLE.CLIENT_ID,
+        clientSecret: GOOGLE.CLIENT_SECRET,
+        callbackURL: GOOGLE.CALLBACK_URL
+      },
+      async (accessToken, refreshToken, profile, done) => {
+        try {
+          const user = await AuthServiceInstance.googleLogin(profile);
+          return done(null, user);
+        } catch(err) {
+          return done(err);
+        }
+      }
     ));
     return passport;
 }

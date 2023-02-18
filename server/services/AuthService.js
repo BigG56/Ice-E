@@ -48,4 +48,26 @@ module.exports = class AuthService {
             }
     
     };
+
+    async googleLogin(profile) {
+
+      const { id, displayName } = profile;
+  
+      try {
+        // Check if user exists
+        const user = await UserModelInstance.findOneByGoogleId(id);
+  
+        // If no user found, create new user
+        if (!user) {
+          return await UserModelInstance.create({ google: { id, displayName } });
+        }
+  
+        // User already exists, return profile
+        return user;
+  
+      } catch(err) {
+        throw createError(500, err);
+      }
+  
+    };
 }

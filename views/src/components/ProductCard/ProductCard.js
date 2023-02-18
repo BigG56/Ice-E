@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 
 function ProductCard(props) {
   const { data } = props;
+  const {loggedIn} = useSelector(state => state.auth);
+  const user = useSelector(state => state.auth);
 
   return (
     <div className="grid-item">
@@ -17,13 +19,26 @@ function ProductCard(props) {
           <p>£<b>{data.price}</b></p>
           <p>{data.type}</p>
         </div>
-          <Button
-          id="view" 
-          variant="outlined"
-          color="primary"
-          component={Link}
-          to={`/products/${data.id}/${data.type}/${data.metal}`}
-        >View</Button>
+        { !loggedIn &&
+          <>
+            <Button
+              id="view" 
+              variant="outlined"
+              color="primary"
+              component={Link}
+              to={`/products/${data.id}/${data.type}/${data.metal}`}>View</Button>
+          </>
+        }
+        { loggedIn &&
+          <>
+            <Button
+              id="view" 
+              variant="outlined"
+              color="primary"
+              component={Link}
+              to={`${data.id}/${data.type}/${data.metal}`}>View</Button>
+          </>
+        }
       </div>
     </div>
   );
