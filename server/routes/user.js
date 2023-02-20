@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const UserService = require('../services/UserService');
+const CartService = require('../services/CartService');
 
 const UserServiceInstance = new UserService();
+const CartServiceInstance = new CartService();
 
 module.exports = (app) => {
 
@@ -12,12 +14,11 @@ module.exports = (app) => {
     try {
       const { userId } = req.params;
       console.log(userId);
-      console.log(req.session);    
-      //const cart = await CartServiceInstance.loadCart(id);
+      const cart = await CartServiceInstance.loadCart(userId);
       const user = await UserServiceInstance.get({id: userId});
     
       res.status(200).json({
-        //cart,
+        cart,
         user
       });
     } catch(err) {

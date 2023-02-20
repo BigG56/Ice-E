@@ -7,6 +7,8 @@ const AuthService = require('../services/AuthService');
 const AuthServiceInstance = new AuthService();
 const UserService = require('../services/UserService');
 const UserServiceInstance = new UserService();
+const CartService = require('../services/CartService');
+const CartServiceInstance = new CartService();
 
 module.exports = (app, passport) => {
 
@@ -21,8 +23,12 @@ module.exports = (app, passport) => {
       let { password } = req.body;
       const hashedPassword = await hashPassword(password)
       data.password = hashedPassword
-      
       const response = await AuthServiceInstance.register(data);
+      const user = await UserServiceInstance.getEmail(data.email);
+      const userId = user.id;
+      console.log(userId)
+      await CartServiceInstance.create({userid: userId});
+  
       res.status(200).json(response);
     } catch(err) {
       next(err);

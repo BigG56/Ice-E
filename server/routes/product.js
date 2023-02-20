@@ -12,7 +12,6 @@ module.exports = (app) => {
     try {
 
       const queryParams = req.query;
-      console.log(req.session)
 
       const response = await ProductServiceInstance.list(queryParams);
       res.status(200).json(response);

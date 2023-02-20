@@ -8,11 +8,11 @@ const Incrementer = (props) => {
   const { value, onDecrement, onIncrement } = props;
 
   return (
-    <div style={{backgroundColor: 'turquoise', width: '160px', height:'45px'}}>
+    <div style={{backgroundColor: 'turquoise', width: '160px', height:'55px'}}>
       <IconButton aria-label="remove from shopping cart" onClick={onDecrement}>
         <RemoveIcon />
       </IconButton>
-      <TextField style={{width:'80px'}}variant="outlined" value={value} />
+      <TextField style={{width:'80px', height:'10px'}}variant="outlined" value={value} />
       <IconButton aria-label="add to shopping cart" onClick={onIncrement}>
         <AddIcon />
       </IconButton>

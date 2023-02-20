@@ -6,7 +6,7 @@ import { Typography } from '@mui/material';
 
 import Incrementer from '../../components/Incrementer/Incrementer';
 
-//import { addItem } from '../../store/cart/Cart.actions';
+import { addItem } from '../../store/cart/Cart.actions';
 import { loadProduct } from '../../store/products/Products.actions';
 import './ProductDetails.css';
 import '../Login/Login';
@@ -20,6 +20,9 @@ function ProductDetails() {
   const dispatch = useDispatch();
   const products = useSelector(state => state.products);
   const { loggedIn } = useSelector(state => state.auth);
+  const user  = useSelector(state => state.user)
+  const { cart } = useSelector(state => state.cart);
+  const cartId = cart.id;
   
   const product = products[productId];
 
@@ -42,10 +45,15 @@ function ProductDetails() {
     setQuantity(quantity - 1);
   }
 
-  /*async function handleAddToCart() {
-    await dispatch(addItem(product, quantity));
-    onClick={handleAddToCart}
-  }*/
+  const Item = {
+    cartId: cartId,
+    product: product,
+    qty: quantity
+  }
+
+  async function handleAddToCart() {
+    await dispatch(addItem(Item));
+  }
 
   return (
     <section className="product-details-container">
@@ -57,7 +65,10 @@ function ProductDetails() {
           <>
             <Typography style={{fontFamily:'Rightous, cursive', textDecoration: 'underline'}} variant="h3">{product?.name}</Typography>
             <Typography variant="h6">{product?.description}</Typography>
-            <Typography className='price' variant="h2">£<b>{product?.price}</b></Typography>
+            <Typography id='price' variant="h2">£<b>{product?.price}</b></Typography>
+            { !loggedIn &&
+            <Button type="contained" id='view' component={Link} to ='/products' color="primary">Back</Button>
+            }
             { loggedIn &&
             <div className='buttons'>          
               <Incrementer
@@ -65,8 +76,8 @@ function ProductDetails() {
                 onIncrement={handleIncrement}
                 value={quantity}
               />
-              <Button type="contained" id='view' color="primary">Add to Cart</Button>
-              <Button type="contained" id='view' component={Link} to ='/products' color="primary">Back</Button>
+              <Button type="contained" id='view' onClick={handleAddToCart} color="primary">Add to Cart</Button>
+              <Button type="contained" id='view' component={Link} to ={`/users/${user.id}/products`} color="primary">Back</Button>
             </div>
             } 
           </>

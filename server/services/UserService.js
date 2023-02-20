@@ -1,5 +1,6 @@
 const UserModel = require('../models/user');
 const UserModelInstance = new UserModel();
+const createError = require('http-errors');
 
 module.exports = class UserService {
 
@@ -7,6 +8,7 @@ module.exports = class UserService {
   
       try {
         // Check if user already exists
+        console.log(email)
         const user = await UserModelInstance.findOneByEmail(email);
   
         // If user doesn't exist, reject

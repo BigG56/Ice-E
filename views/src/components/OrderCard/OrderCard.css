@@ -1,0 +1,76 @@
+.order-card-container {
+    display: flex;
+    flex-direction: column;
+    height: 35vh;
+    border-radius: 4px 4px 0 0;
+    border: 2px solid turquoise;
+    margin-bottom: 1em;
+    color:turquoise;
+    overflow-x:auto;
+    overflow-y: auto;
+  }
+  
+  .order-card-header {
+    border: 2px solid turquoise;
+    background-color:black;
+    flex: 1;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    padding: 0 1em;
+  }
+  
+  .order-card-content {
+    flex: 3;
+    background-color: black;
+    border: 2px solid turquoise;
+    grid-template-columns: 15% auto 25%;
+    display: flex;
+    grid-template-rows: auto;
+    justify-content: space-between;
+  }
+  
+  .order-card-footer {
+    flex: 0.75;
+    background-color: turquoise;
+    border: 2px solid;
+  }
+  
+  .order-card-header-row {
+    grid-template-columns: 15% 10% auto 20%;
+    display: grid;
+    grid-template-rows: auto;
+  }
+  
+  .order-card-header .top {
+    padding-bottom: 0.25em;
+    align-self: end;
+  }
+  
+  .order-card-header .bottom {
+    align-self: start;
+  }
+  
+  .order-card-header-title {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+  
+  .order-card-action-container {
+    display: flex;
+    height: auto;
+  }
+  
+  .order-card-content-img {
+    width: 100%;
+  }
+  
+  .order-card-content-info {
+    height: 100%;
+  }
+  
+  .order-card-content-action-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }

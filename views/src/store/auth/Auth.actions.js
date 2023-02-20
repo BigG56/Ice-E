@@ -9,7 +9,7 @@ export const checkLoginStatus = createAsyncThunk(
       console.log(response);
 
       return {
-        //cart: response.cart,
+        cart: response.cart,
         user: response.user,
         loggedIn: true
       }

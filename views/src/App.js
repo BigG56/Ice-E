@@ -7,9 +7,13 @@ import ProductsPage from './routes/Products/Products';
 import Login from './routes/Login/Login';
 import ProductDetails from './routes/ProductDetails/ProductDetails';
 import Register from './routes/Register/Register';
-import Account from './routes/Account/Account'
-import Home from './routes/Home/Home'
+import Account from './routes/Account/Account';
+import Home from './routes/Home/Home';
+import Cart from './routes/Cart/Cart';
+import Orders from './routes/Orders/Order';
 import History from './utils/History';
+import Checkout from './routes/Checkout/Checkout';
+import OrderDetails from './routes/OrderDetails/OrderDetails';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 
@@ -32,6 +36,10 @@ function App() {
           <Route path="users/:userId/account" element={<ProtectedRoute loggedIn={loggedIn}><Account/></ProtectedRoute>}/>
           <Route path='users/:userId/products' element={<ProtectedRoute loggedIn={loggedIn}><ProductsPage /></ProtectedRoute>}/>
           <Route path="users/:userId/products/:productId/:productType/:prodMetal" element={<ProtectedRoute loggedIn={loggedIn}><ProductDetails /></ProtectedRoute>}/>
+          <Route path="users/:userId/carts/:cartId" element={<ProtectedRoute loggedIn={loggedIn}><Cart/></ProtectedRoute>}/>
+          <Route path="users/:userId/carts/:cartId/checkout" element={<ProtectedRoute loggedIn={loggedIn}><Checkout/></ProtectedRoute>}/>
+          <Route path="users/:userId/orders" element={<ProtectedRoute loggedIn={loggedIn}><Orders/></ProtectedRoute>}/>
+          <Route path="users/:userId/orders/:orderId" element={<ProtectedRoute loggedIn={loggedIn}><OrderDetails/></ProtectedRoute>}/>
         </Routes>
       </Router>
     </div>   

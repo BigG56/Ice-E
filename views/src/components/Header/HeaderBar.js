@@ -12,6 +12,7 @@ const Header = () => {
 
   const { loggedIn } = useSelector(state => state.auth);
   const user = useSelector(state => state.user);
+  const { cart } =useSelector(state => state.cart);
 
   const logout = () => {
     window.open('http://localhost:8000/home/auth/logout', '_self')
@@ -32,8 +33,8 @@ const Header = () => {
                     <>
                       <Button color="inherit" component={Link} to={`/users/${user.id}`}><b>Home</b></Button>
                       <Button  onClick={logout} color="inherit"><b>Logout</b></Button>
-                      <IconButton aria-label="access shopping cart" color="inherit">
-                        <Badge overlap="rectangular" color="secondary">
+                      <IconButton aria-label="access shopping cart" component={Link} to={`users/${user.id}/carts/${cart.id}`} color='inherit'>
+                        <Badge overlap="rectangular" color='primary' badgeContent={cart.items?.length || 0}>
                           <ShoppingCartIcon />
                         </Badge>
                       </IconButton>
