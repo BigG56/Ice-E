@@ -11,10 +11,10 @@ const orderItemsSlice = createSlice({
     builder
       .addCase(loadOrderItems.fulfilled, (state, action) => {
         const { orderItems } = action.payload;
-          Object.assign(state, orderItems);
-      })
-      .addCase(loadOrderItems.pending, (state) => {
-        Object.assign(state, {})
+        orderItems.forEach((orderItem) => {
+          const { id } = orderItem;
+          state[id] = orderItem;
+        });
       })
   }
 });

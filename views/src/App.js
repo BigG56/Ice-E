@@ -15,6 +15,8 @@ import History from './utils/History';
 import Checkout from './routes/Checkout/Checkout';
 import OrderDetails from './routes/OrderDetails/OrderDetails';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import UpdateDetails from './routes/UpdateDetails/UpdateDetailsform'
+import AddressPage from './routes/Address/Address'
 
 
 
@@ -34,6 +36,8 @@ function App() {
           <Route path="/auth/register" element={<Register/>}/>
           {/* Protected Routes */}
           <Route path="users/:userId/account" element={<ProtectedRoute loggedIn={loggedIn}><Account/></ProtectedRoute>}/>
+          <Route path="users/:userId/account/update" element={<ProtectedRoute loggedIn={loggedIn}><UpdateDetails/></ProtectedRoute>}/>
+          <Route path="users/:userId/account/address" element={<ProtectedRoute loggedIn={loggedIn}><AddressPage/></ProtectedRoute>}/>
           <Route path='users/:userId/products' element={<ProtectedRoute loggedIn={loggedIn}><ProductsPage /></ProtectedRoute>}/>
           <Route path="users/:userId/products/:productId/:productType/:prodMetal" element={<ProtectedRoute loggedIn={loggedIn}><ProductDetails /></ProtectedRoute>}/>
           <Route path="users/:userId/carts/:cartId" element={<ProtectedRoute loggedIn={loggedIn}><Cart/></ProtectedRoute>}/>

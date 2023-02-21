@@ -28,11 +28,26 @@ module.exports = (app) => {
 
   router.put('/:userId', async (req, res, next) => {
     try {
-      const { userId } = req.params;
-      const data = req.body;
+      const { userId } = req.body
+      console.log(userId);
+      const {userName, firstname, lastname} = req.body
+      const data = {userName, firstname, lastname}
+      console.log(data)
 
-      const response = await UserServiceInstance.update({ id: userId, ...data });
+      const response = await UserServiceInstance.update({id: userId, ...data});
       res.status(200).send(response);
+    } catch(err) {
+      next(err);
+    }
+  });
+
+  router.post('/:userId/accounts', async (req, res, next) => {
+    try {
+      const data = req.body
+      console.log(data)
+
+      const response = await UserServiceInstance.createAddress({});
+      res.status(200).json(response);
     } catch(err) {
       next(err);
     }

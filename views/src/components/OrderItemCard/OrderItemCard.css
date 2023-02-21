@@ -1,19 +1,24 @@
 .order-item-card {
     display:flex;
-    background-color: purple;
-    border: 2px solid gold;
+    background-color: black;
+    border: 2px solid turquoise;
     margin:5px;
-    color:gold;
+    color:turquoise;
     flex-direction: row;
+    border-radius:20px;
 }
 
 .orderItemImg {
     height:200px;
     width:200px;
+    border-radius:20px;
 }
 
 .itemName {
-    border:2px solid gold;
+    border:2px solid turquoise;
+    background-color: turquoise;
+    color:black;
+    border-radius:20px;
 }
 
 .itemDescription {

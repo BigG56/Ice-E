@@ -1,25 +1,15 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { loadOrderItems } from '../../store/orderItems/OrderItems.actions'
 import OrderItemCard  from '../../components/OrderItemCard/OrderItemCard';
+import Button from '@mui/material/Button'
 
 function OrderDetails() {
   const { orderId } = useParams();
   const dispatch = useDispatch();
   const orderItems = useSelector(state => state.orderItems);
-  //const [ orderItem, setOrderItems ] = useState('');
-  /*const reset = (state, action) => {
-    if (action.type === 'reset') {
-      return {
-        initialState: state = {}
-      }
-    }
-  }
-  const [state, dispatch] = useReducer(reset, state);*/
-  /*const clearState = () => {
-    setOrderItems('');
-  }*/
+  const user = useSelector(state => state.user);
   
   useEffect(() => {
     async function load() {
@@ -29,17 +19,18 @@ function OrderDetails() {
   }, [orderId, dispatch]);
 
   return (
-    <>
-      <div style={{display: 'flex', backgroundColor: 'purple', border: "2px solid gold", marginTop: "10px"}}>
-        <p style={{fontSize: 40, color: 'gold'}}>OrderDetails</p>
+    <div style={{textAlign: 'center',overflowX:'auto', overflowY:'auto', height:'700px'}}>
+      <div style={{ display: 'flex', justifyContent:'space-between', backgroundColor: 'turquoise', border: "2px solid", margin: "10px", borderRadius:'20px'}}>
+        <p style={{ fontSize: 40, fontFamily:'rightou, cursive'}}>OrderDetails</p>
+        <Button type="contained" id='view' component={Link} to ={`/users/${user.id}/orders`} style={{borderRadius:'20px', backgroundColor:'black', color: 'turquoise'}}>Back</Button>
       </div>
       { 
         Object.keys(orderItems).map((key) => {
-          const orderItem = orderItems[key];
-          return <OrderItemCard {...orderItem} key={orderItem.id} />
+          const Item = orderItems[key];
+          return <OrderItemCard {...Item} key={Item.id} />
         })
       }
-    </>
+    </div>
   );
 }
 

@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 function ProductCard(props) {
   const { data } = props;
   const {loggedIn} = useSelector(state => state.auth);
-  const user = useSelector(state => state.auth);
 
   return (
     <div className="grid-item">

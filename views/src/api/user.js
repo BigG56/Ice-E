@@ -12,13 +12,25 @@ export const fetchUser = async (userId) => {
 }
   
   // API interface for updating the user's profile
-export const updateUser = async (userName) => {
+export const updateUser = async (credentials) => {
     try {
-      const response = await API.post(`users/${userName}`, data);
+      const response = await API.put(`users/:userId`, credentials);
   
       return response.data;
   
     } catch(err) {
       throw err.response.data;
     }
+}
+
+export const createAddress = async (credentials) => {
+  try {
+    console.log(credentials)
+    const response = await API.post(`users/:userId/accounts`, credentials);
+
+    return response.data;
+
+  } catch(err) {
+    throw err.response.data;
+  }
 }

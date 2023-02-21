@@ -7,7 +7,7 @@ import { checkLoginStatus } from '../../store/auth/Auth.actions'
 //import ProductCard from '../../components/ProductCard/ProductCard';
 import './Home.css'
 import '../Login/Login';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button'
 
 function Home() {
@@ -45,6 +45,9 @@ function Home() {
               <Button component={Link} id='view' to={`/users/${user.id}/products`}><b>Products</b></Button>
             </div>
           </>
+        }
+        { user.google && !user.firstname &&
+          <Navigate to={`/users/${user.id}/account/update`}/>
         }
     </div>
   );

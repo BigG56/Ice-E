@@ -1,11 +1,14 @@
 import React from 'react';
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 import './OrderItemCard.css';
+import { useSelector } from 'react-redux';
 
 const OrderItemCard = (props) => {
     const { orderid, qty, price, productid, name, description, img} = props;
-    const convertPrice = Number(price.replace(/[^0-9.-]+/g,""));
-    const total = convertPrice * qty;
+    const user = useSelector(state => state.user);
+    const total = price * qty;
 
     return (
       <div className="order-item-card">
@@ -18,7 +21,8 @@ const OrderItemCard = (props) => {
           <p><b>Total</b>: £{total}</p>
           <p><b>Qty</b>: {qty}</p>
           <p><b>Product Id</b>: {productid}</p>
-          <p>{orderid}</p>
+          <p><b>Order</b>: {orderid}</p>
+          <Button type="contained" id='view' component={Link} to ={`/users/${user.id}/products/${productid}`} color="primary">Back</Button>
         </div>
       </div>
     )

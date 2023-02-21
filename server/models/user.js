@@ -26,6 +26,8 @@ module.exports = class UserModel {
         try {
     
           const { id, ...params } = data;
+          console.log(id)
+          console.log(params)
     
           // Generate SQL statement - using helper for dynamic parameter injection
           const condition = pgp.as.format('WHERE id = ${id} RETURNING *', { id });

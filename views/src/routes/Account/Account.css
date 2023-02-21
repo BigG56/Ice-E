@@ -8,14 +8,26 @@
     border: solid 2px turquoise;
     margin: 10px;
     background-color: black;
+    border-radius:20px;
 }
 
 .accountBar {
     display: flex;
-    justify-content: center;
+    justify-content:space-between;
     align-items: center;
     flex-direction: row;
     background-color: black;
     border: solid 2px turquoise;
     margin: 10px;
+    border-radius:20px;
+}
+
+.address {
+    display:flex;
+    justify-content: center;
+    text-align:center;
+    background-color: black;
+    border:2px solid turquoise;
+    border-radius:20px;
+    margin:10px;
 }

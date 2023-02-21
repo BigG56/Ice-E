@@ -31,6 +31,12 @@ module.exports = class CartService {
     try {
       // Load user cart based on ID
       const cart = await CartModel.findOneByUser(userId);
+      if (!cart) {
+        const newCart = new CartModel();
+        const cart = await newCart.create(userId);
+        newCart.items = items;
+        return cart;
+      }
       console.log(cart);
 
       // Load cart items and add them to the cart record
@@ -104,8 +110,8 @@ module.exports = class CartService {
       await Order.create();
 
       //Create order items
-      const orderId = Order.id;
-      Order.items = cartItems.map(item => new OrderItemModel({...item, orderId}))
+      const orderid = Order.id;
+      Order.items = cartItems.map(item => new OrderItemModel({...item, orderid}))
       await OrderItemModel.create(Order.items)
 
       // Make charge to payment method
