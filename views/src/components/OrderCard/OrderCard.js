@@ -11,6 +11,7 @@ const OrderCard = (props) => {
 
   const { created, id, total, status} = props;
   const user  = useSelector(state => state.user);
+  const {delivery} = useSelector(state => state.user);
   const itemTotal = total / 100;
   //const orderItems = useSelector(state => state.orderItems);
   
@@ -39,7 +40,15 @@ const OrderCard = (props) => {
       <div className="order-card-content">
         <div className="order-card-content-info">
           <p className="title" style={{width: '120px', textAlign: 'center'}}><b>Ice-E</b></p>
-          <p>Thank you for your purchase from the the WineCellar!</p>
+          <p>Thank you for your purchase from the the Ice-E!</p>
+        </div>
+        <div className="deliverTo">
+          <p style={{textDecoration: 'underline'}}>D<b>elivery</b></p>
+          <p>{delivery.addressline1}</p>
+          <p>{delivery.addressline2}</p>
+          <p>{delivery.city}</p>
+          <p>{delivery.county}</p>
+          <p>{delivery.postcode}</p>
         </div>
         <div className="order-card-content-action-container">
           <Button id="view" type="contained" component={Link} to={`/users/${user.id}/orders/${id}`}>OrderDetails</Button>

@@ -9,10 +9,11 @@ module.exports = (app, passport) => {
 
   app.use('/home/users/:userId/carts', router);
 
+  //Get cart endpoint
   router.get('/:cartId', async (req, res, next) => {
     try {
       const {id}  = req.params;
-      console.log(id)
+      //console.log(id)
       
       const response = await CartServiceInstance.loadCart({id});
 
@@ -22,13 +23,14 @@ module.exports = (app, passport) => {
       next(err);
     }
   });
-  
+
+  //Create cart endpoint
   router.post('/:cartId', async (req, res, next) => {
     try {
       const {cartId, product, qty} = req.body;
-      console.log(cartId);
-      console.log(product.id);
-      console.log(qty);
+      //console.log(cartId);
+      //console.log(product.id);
+      //console.log(qty);
     
       const response = await CartServiceInstance.addItem(cartId, product.id, qty);
 
@@ -38,11 +40,12 @@ module.exports = (app, passport) => {
     }
   });
 
+  //Update cartItem endpoint
   router.put('/:cartId/items/:cartitemid', async (req, res, next) => {
     try {
       const {qty, cartitemid} = req.body;
-      console.log(cartitemid);
-      console.log(qty);
+      //console.log(cartitemid);
+      //console.log(qty);
     
       const response = await CartServiceInstance.updateItem(qty, cartitemid);
 
@@ -52,10 +55,11 @@ module.exports = (app, passport) => {
     }
   });
 
+  //Delete cartItem endpoint
   router.delete('/:cartId/items/:cartitemid', async (req, res, next) => {
     try {
       const { cartitemid } = req.params;
-      console.log(cartitemid)
+      //console.log(cartitemid)
     
       const response = await CartServiceInstance.removeItem(cartitemid);
 
@@ -64,14 +68,15 @@ module.exports = (app, passport) => {
       next(err);
     }
   });
-
+  
+  //Checkout endpoint
   router.post('/:cartId/checkout', async (req, res, next) => {
     try {
       const { userId, cartId, paymentInfo } = req.body; 
-      console.log(userId, cartId, paymentInfo);
+      //console.log(userId, cartId, paymentInfo);
 
       const response = await CartServiceInstance.checkout(userId, cartId, paymentInfo);
-      console.log(response);
+      //console.log(response);
       res.status(200).json(response);
     } catch(err) {
       next(err);

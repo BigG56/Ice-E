@@ -10,6 +10,7 @@ const stripe = loadStripe("pk_test_51MZFyMBaO0IQxageqOhBVLcE7naePrr14xXuBtIq0T5g
 
 function Checkout() {
   
+  const {delivery} = useSelector(state => state.user)
   const { paymentMade } = useSelector(state => state.cart);
   const user = useSelector(state => state.user);
   return (
@@ -21,6 +22,9 @@ function Checkout() {
     </Elements>
     { paymentMade &&
       <Navigate to={`/users/${user.id}/orders`}/>
+    }
+    { !delivery.addressline1 &&
+      <Navigate to={`/users/${user.id}/account/address`}/>
     }
     </>
   );

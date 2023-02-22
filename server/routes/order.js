@@ -7,33 +7,33 @@ const OrderServiceInstance = new OrderService();
 module.exports = (app) => {
 
   app.use('/home/users', router);
-
+  
+  //Get orders endpoint
   router.get('/:userId/orders', async (req, res, next) => {
     try {
       const { userId }  = req.params
-      console.log(userId);
+      //console.log(userId);
   
       const response = await OrderServiceInstance.list(userId);
-      console.log(response);
+      //console.log(response);
       res.status(200).json(response);
     } catch(err) {
       next(err);
     }
   });
 
+  //Get order by orderId endpoint
   router.get('/:userId/orders/:orderId', async (req, res, next) => {
     try {
       const { orderId } = req.params;
-      console.log(orderId);
+      //console.log(orderId);
   
       const response = await OrderServiceInstance.findByOrderId(orderId);
-      console.log(response);
+      //console.log(response);
       res.status(200).json(response);
     } catch(err) {
       next(err);
     }
-
-
   });
 
 }

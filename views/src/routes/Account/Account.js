@@ -6,6 +6,7 @@ import './Account.css';
 
 function Account() {
   const user  = useSelector(state => state.user);
+  const {delivery} = useSelector(state => state.user)
 
   return (
     <section>
@@ -23,12 +24,21 @@ function Account() {
       </div>
       <div className='accountBar'>
         <p style={{textAlign: 'center', fontSize: 60, color: 'turquoise', fontFamily: 'rightous, cursive'}}>Delivery Address</p>
-        <Button variant="contained" id='view' component={Link} to ={`/users/${user.id}/account/update`}>Change Info</Button>
+        <Button variant="contained" id='view' component={Link} to ={`/users/${user.id}/account/address`}>Change Info</Button>
       </div>
-      { !user.address_id &&
+      { !delivery &&
         <div className='address'>
           <Button style={{height:'100px'}} variant="contained" id='view' component={Link} to ={`/users/${user.id}/account/address`}>Add address</Button>
         </div>
+      }
+      { delivery &&
+      <div className="addressInfo">
+        <p className='deliveryInfo'><b>Address line 1:</b> {delivery.addressline1}</p>
+        <p className='deliveryInfo'><b>Address line 2:</b> {delivery.addressline2}</p>
+        <p className='deliveryInfo'><b>City:</b> {delivery.city}</p>
+        <p className='deliveryInfo'><b>County:</b> {delivery.county}</p>
+        <p className='deliveryInfo'><b>Postcode:</b> {delivery.postcode}</p>
+      </div>
       }
    </section>
   );

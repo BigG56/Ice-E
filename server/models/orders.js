@@ -13,7 +13,8 @@ module.exports = class OrderModel {
       this.modified = moment.utc().toISOString();
       this.status = data.status || 'PENDING';
     }
-  
+
+    //creates new OrderItem model
     addItems(items) {
       this.items = items.map(item => new OrderItem({...item}));
     }

@@ -19,14 +19,14 @@ module.exports = (app, passport) => {
   
     try {
       const data = req.body;
-      console.log(req.body);
+      //console.log(req.body);
       let { password } = req.body;
       const hashedPassword = await hashPassword(password)
       data.password = hashedPassword
       const response = await AuthServiceInstance.register(data);
       const user = await UserServiceInstance.getEmail(data.email);
       const userId = user.id;
-      console.log(userId)
+      //console.log(userId)
       await CartServiceInstance.create({userid: userId});
   
       res.status(200).json(response);
@@ -42,13 +42,13 @@ module.exports = (app, passport) => {
       const { email, password } = req.body;
     
       const response = await AuthServiceInstance.login({ email, password});
-      console.log(response);
+      //console.log(response);
       res.status(200).json(response);
     } catch(err) {
       next(err);
     }
   });
-
+  //Logout endpoint
   router.get('/logout', function(req, res, next){
     req.logout(function(err) {
       if (err) { return next(err); }
@@ -63,7 +63,7 @@ module.exports = (app, passport) => {
   router.get('/google/callback',
     passport.authenticate('google', { failureRedirect: '/login/failure'}),
     async (req, res) => {
-      console.log(req.user)
+      //console.log(req.user)
       res.redirect(`http://localhost:3000/home/users/${req.user.id}`);
     }
     );

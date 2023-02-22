@@ -10,7 +10,7 @@ module.exports = class UserService {
   
       try {
         // Check if user already exists
-        console.log(email)
+        //console.log(email)
         const user = await UserModelInstance.findOneByEmail(email);
   
         // If user doesn't exist, reject
@@ -62,12 +62,36 @@ module.exports = class UserService {
     };
 
     async createAddress(data) {
+      //console.log(data)
 
       try {
+        const userid = data.userid
+        await AddressModelInstance.delete(userid)
         // Check if user already exists
-        const user = await AddressModelInstance.create(data);
+        const address = await AddressModelInstance.create(data);
   
-        return user;
+        return address;
+  
+      } catch(err) {
+        throw err;
+      }
+  
+    };
+
+    async getAddress(data) {
+
+      const { userid } = data;
+  
+      try {
+        // Check if user already exists
+        const address = await AddressModelInstance.findById(userid);
+  
+        // If user doesn't exist, reject
+        if (!address) {
+          throw createError(404, 'Address record not found');
+        }
+  
+        return address;
   
       } catch(err) {
         throw err;

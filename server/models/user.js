@@ -2,9 +2,10 @@ const db = require('../db');
 const pgp = require('pg-promise')({ capSQL: true });
 
 module.exports = class UserModel {
+    //Creates new user
     async create(data) {
         try {
-          console.log(data);
+          //console.log(data);
           // Generate SQL statement - using helper for dynamic parameter injection
           const statement = pgp.helpers.insert(data, null, 'users') + 'RETURNING *';
       
@@ -21,7 +22,7 @@ module.exports = class UserModel {
           throw new Error(err);
         }
     }
-
+    //Updates user
     async update(data) {
         try {
     
@@ -46,7 +47,7 @@ module.exports = class UserModel {
           throw new Error(err);
         } 
     }
-
+    //Find user by email
     async findOneByEmail(email) {
         try {
     
@@ -69,7 +70,7 @@ module.exports = class UserModel {
           throw new Error(err);
         }
     }
-
+    //Find user by id
     async findOneById(id) {
         try {
     
@@ -92,7 +93,7 @@ module.exports = class UserModel {
           throw new Error(err);
         }
       }
-
+      //Find user by google id
       async findOneByGoogleId(id) {
         try {
     

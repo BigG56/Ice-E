@@ -10,10 +10,11 @@ module.exports = (app) => {
 
   app.use('/home/users', router);
 
+  //Get user, cart and address endpoint
   router.get('/:userId', async (req, res, next) => {
     try {
       const { userId } = req.params;
-      console.log(userId);
+      //console.log(userId);
       const cart = await CartServiceInstance.loadCart(userId);
       const user = await UserServiceInstance.get({id: userId});
     
@@ -26,27 +27,46 @@ module.exports = (app) => {
     }
   });
 
+  //Update user endpoint
   router.put('/:userId', async (req, res, next) => {
     try {
       const { userId } = req.body
-      console.log(userId);
+      //console.log(userId);
       const {userName, firstname, lastname} = req.body
       const data = {userName, firstname, lastname}
-      console.log(data)
+      //console.log(data)
 
       const response = await UserServiceInstance.update({id: userId, ...data});
-      res.status(200).send(response);
+      res.status(200).json(response);
     } catch(err) {
       next(err);
     }
   });
 
-  router.post('/:userId/accounts', async (req, res, next) => {
+  //Get user delivery info
+  router.get('/:userId/account/address', async (req, res, next) => {
     try {
-      const data = req.body
-      console.log(data)
+      const {userId} = req.params
+      //console.log(data)
+      const userid = userId
 
-      const response = await UserServiceInstance.createAddress({});
+      const response = await UserServiceInstance.getAddress(userid);
+      res.status(200).json(response);
+    } catch(err) {
+      next(err);
+    }
+  });
+
+  //Create user delivery address
+  router.post('/:userId/account/address', async (req, res, next) => {
+    try {
+      const {userId} = req.body
+      const userid = userId
+      const {addressline1, addressline2, city, county, postcode} = req.body
+      const data = {userid, addressline1, addressline2, city, county, postcode}
+      //console.log(data)
+
+      const response = await UserServiceInstance.createAddress(data);
       res.status(200).json(response);
     } catch(err) {
       next(err);

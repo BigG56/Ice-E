@@ -5,12 +5,12 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import TextField from '../../components/TextField/TextField';
 import './UpdateDetailsForm.css';
-import { updateDetails } from '../../store/user/Users.actions';
+import { addAddress, updateDetails } from '../../store/user/Users.actions';
 
 import * as Yup from 'yup';
 
 const UpdateDetails = () => {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
   const { userId } = useParams()
@@ -19,7 +19,7 @@ const UpdateDetails = () => {
   const handleUpdate = async (credentials) => {
     try {
       await dispatch(updateDetails(credentials));
-      navigate('/users')
+      navigate(`/users/${user.id}/account`)
     } catch(err) {
       console.log(err)
       throw err
@@ -66,6 +66,7 @@ const UpdateDetails = () => {
                 id="lastname-input"
               />
               <Button variant="contained" type="submit"style={{backgroundColor: "black", color: "turquoise", border: "2px solid turquoise"}}>Submit</Button>
+              <Button type="contained" id='view' component={Link} to ={`/users/${user.id}/account`} color="primary">Back</Button>
             </Form>
           </Formik>
         </div>

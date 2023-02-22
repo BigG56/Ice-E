@@ -8,6 +8,7 @@ module.exports = (app) => {
 
   app.use('/home/products', router);
 
+  //Get all products endpoint
   router.get('/', async (req, res, next) => {
     try {
 
@@ -20,6 +21,7 @@ module.exports = (app) => {
     }
   });
 
+  //Get product by id endpoint
   router.get('/:productId', async (req, res, next) => {
     try {
       const { productId } = req.params;

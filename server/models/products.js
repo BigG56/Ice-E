@@ -1,13 +1,16 @@
 const db = require('../db');
 
 module.exports = class ProductModel {
+
+  //Gets all Products
   async find(options = {}) {
     try {
-
+      // Generate SQL statement
       const statement = `SELECT *
                          FROM products`;
       const values = [];
-  
+
+      // Execute SQL statment
       const result = await db.query(statement, values);
 
       if (result.rows?.length) {
@@ -28,12 +31,13 @@ module.exports = class ProductModel {
    */
   async findOne(id) {
     try {
-
+      // Generate SQL statement
       const statement = `SELECT *
                          FROM products
                          WHERE id = $1`;
       const values = [id];
-  
+
+      // Execute SQL statment
       const result = await db.query(statement, values);
 
       if (result.rows?.length) {

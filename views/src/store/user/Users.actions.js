@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { updateUser, createAddress } from '../../api/user';
+import { updateUser, createAddress, getAddress } from '../../api/user';
 
 export const updateDetails = createAsyncThunk(
     'user/updateUser',
@@ -16,17 +16,32 @@ export const updateDetails = createAsyncThunk(
     }
 );
 
-  export const deliveryAddress = createAsyncThunk(
-    'user/address',
+export const addAddress = createAsyncThunk(
+    'user/deliveryAddress',
     async (credentials, thunkAPI) => {
         console.log(credentials)
       try {
         const response = await createAddress(credentials);
         return {
-          address_id: response
+          delivery: response
         }
       } catch(err) {
         throw err;
       }
     }
-  );
+);
+
+export const fetchAddress = createAsyncThunk(
+  'user/fetchDeliveryAddress',
+  async (userId, thunkAPI) => {
+      console.log(userId)
+    try {
+      const response = await getAddress(userId);
+      return {
+        delivery: response
+      }
+    } catch(err) {
+      throw err;
+    }
+  }
+);

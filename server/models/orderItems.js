@@ -41,7 +41,7 @@ module.exports = class OrderItemModel {
   // Retrieve order items for a order
   static async find(orderId) {
     try {
-      console.log(orderId)
+      //console.log(orderId)
       // Generate SQL statement
       const statement = `SELECT *
                          FROM orderitems

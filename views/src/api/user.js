@@ -23,10 +23,22 @@ export const updateUser = async (credentials) => {
     }
 }
 
+export const getAddress = async (credentials) => {
+  try {
+    console.log(credentials)
+    const response = await API.get(`users/:userId/account/address`, credentials);
+
+    return response.data;
+
+  } catch(err) {
+    throw err.response.data;
+  }
+}
+
 export const createAddress = async (credentials) => {
   try {
     console.log(credentials)
-    const response = await API.post(`users/:userId/accounts`, credentials);
+    const response = await API.post(`users/:userId/account/address`, credentials);
 
     return response.data;
 

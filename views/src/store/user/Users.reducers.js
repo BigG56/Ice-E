@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { checkLoginStatus, loginUser } from '../auth/Auth.actions';
-import { updateDetails } from './Users.actions';
+import { addAddress, updateDetails, fetchAddress } from './Users.actions';
 
 const initialState = {
+  delivery: {}
 };
 
 const userSlice = createSlice({
@@ -20,10 +21,19 @@ const userSlice = createSlice({
         const { user } = action.payload;
         Object.assign(state, user);
       })
+      .addCase(addAddress.fulfilled, (state, action) => {
+        const { delivery } = action.payload;
+        Object.assign(state.delivery, delivery);
+      })
+      .addCase(fetchAddress.fulfilled, (state, action) => {
+        const { delivery } = action.payload;
+        Object.assign(state.delivery, delivery);
+      })
       // Check login status success
       .addCase(checkLoginStatus.fulfilled, (state, action) => {
-        const { user } = action.payload;
+        const { user, address } = action.payload;
         Object.assign(state, user);
+        Object.assign(state.delivery, address)
       })
   }
 });

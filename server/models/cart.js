@@ -9,11 +9,7 @@ module.exports = class CartModel {
     this.modified = moment.utc().toISOString();
   }
 
-  /**
-   * Creates a new cart for a user
-   * @param  {Object}      data [User data]
-   * @return {Object|null}      [Created user record]
-   */
+  //Create user cart
   async create(userid) {
     try {
       console.log(userid)
@@ -38,11 +34,7 @@ module.exports = class CartModel {
     }
   }
 
-  /**
-   * Loads a cart by User ID
-   * @param  {number}      id [User ID]
-   * @return {Object|null}    [Cart record]
-   */
+  //Find cart by userId
   static async findOneByUser(userId) {
     try {
 
@@ -66,11 +58,7 @@ module.exports = class CartModel {
     }
   }
 
-  /**
-   * Loads a cart by ID
-   * @param  {number}      id [Cart ID]
-   * @return {Object|null}    [Cart record]
-   */
+  //Find cart by cartId
   static async findOneById(cartId) {
     try {
       console.log(cartId)

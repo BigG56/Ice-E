@@ -8,7 +8,7 @@ module.exports = class AuthService {
     async register(data) {
 
         const { email } = data;
-        console.log(data);
+        //console.log(data);
     
         try {
           // Check if user already exists
@@ -38,6 +38,7 @@ module.exports = class AuthService {
               }
               // Check if user exists
               const user = await UserModelInstance.findOneByEmail(email);
+              //Check if user and password is correct
               const compHashPassword = await bcrypt.comparePassword(password, user.password)
               if (!(user && compHashPassword)) {
                 throw createError(401, 'Incorrect email or password.');

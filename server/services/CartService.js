@@ -10,11 +10,11 @@ const stripe = require('stripe')(STRIPE_SECRET_KEY);
 module.exports = class CartService {
 
   async create(data) {
-    console.log(data)
+    //console.log(data)
 
     try {
       const { userid } = data;
-      console.log(userid)
+      //console.log(userid)
       // Instantiate new cart and save
       const Cart = new CartModel();
       const cart = await Cart.create(userid);
@@ -37,7 +37,7 @@ module.exports = class CartService {
         newCart.items = items;
         return cart;
       }
-      console.log(cart);
+      //console.log(cart);
 
       // Load cart items and add them to the cart record
       const items = await CartItemModel.find(cart.id);
@@ -54,11 +54,11 @@ module.exports = class CartService {
     try {
       // Load user cart based on ID
       const cart = await CartModel.findOneById(cartId);
-      console.log(cart);
+      //console.log(cart);
 
       // Create cart item
       const cartItem = await CartItemModel.create({ cartid: cart.id, productid: product, qty });
-      console.log(cartItem)
+      //console.log(cartItem)
 
       return cartItem;
 
@@ -103,7 +103,7 @@ module.exports = class CartService {
       }, 0);
     
       const userid = userId;
-      console.log(userid)
+      //console.log(userid)
       // Generate initial order
       const Order = new OrderModel({total, userid});
       Order.addItems(cartItems);
@@ -125,13 +125,13 @@ module.exports = class CartService {
       // On successful charge to payment method, update order status to COMPLETE
       Order.update({ status: 'COMPLETE' });
       await CartItemModel.deleteAll(cartId)
-      console.log(Order);
+      //console.log(Order);
       
 
       return Order;
 
     } catch(err) {
-      console.error(err);
+      //console.error(err);
       throw err;
     }
   }

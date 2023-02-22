@@ -5,7 +5,7 @@ module.exports = class CartItemModel {
 
   static async create(data) {
     try {
-        console.log(data)
+        //console.log(data)
     
       // Generate SQL statement - using helper for dynamic parameter injection
       const statement = pgp.helpers.insert(data, null, 'cartitems') + 'RETURNING *';

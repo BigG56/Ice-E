@@ -1,20 +1,26 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkLoginStatus } from '../../store/auth/Auth.actions'
-
-//import { loadProducts } from '../../store/products/Products.actions';
-
-//import ProductCard from '../../components/ProductCard/ProductCard';
 import './Home.css'
 import '../Login/Login';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button'
+import { fetchAddress } from '../../store/user/Users.actions';
 
 function Home() {
   const { userId } = useParams();  
   const dispatch = useDispatch();
   const { loggedIn } = useSelector(state => state.auth)
   const user = useSelector(state => state.user);
+
+  useEffect(() => {
+    if (user.google) {
+      async function isLoggedIn() {
+        await dispatch(fetchAddress(userId));
+      }
+      isLoggedIn();
+    }
+  }, [userId, dispatch]);
 
   useEffect(() => {
     if (userId) {
