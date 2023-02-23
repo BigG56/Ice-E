@@ -58,9 +58,14 @@
   
 .order-card-header-title {
   font-size: 0.8rem;
-  margin: 0;
 }
-  
+
+@media only screen and (max-width: 640px) {
+  .order-card-header-row {
+      gap:20px;
+  }
+}
+
 .order-card-action-container {
   display: flex;
   height: auto;
