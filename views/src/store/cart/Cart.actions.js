@@ -7,7 +7,7 @@ export const addItem = createAsyncThunk(
     const { cartId, product, qty} = Item;
     try {
       const response = await addToCart({cartId, product, qty});
-      console.log(response);
+      //console.log(response);
       const item = {
         ...product,
         cartitemid: response,

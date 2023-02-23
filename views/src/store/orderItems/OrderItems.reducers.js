@@ -9,6 +9,7 @@ const orderItemsSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
+    //Load orderItem success
       .addCase(loadOrderItems.fulfilled, (state, action) => {
         const { orderItems } = action.payload;
         orderItems.forEach((orderItem) => {

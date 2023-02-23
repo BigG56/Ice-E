@@ -9,12 +9,45 @@
     background-color: black;
     margin: 100px;
 }
+
+@media only screen and (max-width: 640px) {
+    .home-container {
+        display:flex;
+        flex-direction:column;
+        border-radius: 40px;
+    }
+}
+
+.container {
+    display:flex;
+    flex-direction:column;
+}
+
 .welcome {
     font-family: Rightous, cursive;
     font-size: 40px;
 }
+
+@media only screen and (max-width: 640px) {
+    .welcome {
+        font-size: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 .userButton {
     display:flex;
     gap:10px;
     margin:10px;
+}
+
+@media only screen and (max-width: 640px) {
+    .userButton {
+        flex-direction: column;
+    }
+}
+
+span {
+    text-align:center;
 }

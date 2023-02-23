@@ -15,11 +15,6 @@ const orderSlice = createSlice({
         const { order } = action.payload;
         state[order.id] = order;
       })
-      // Load order data by ID success
-      /*.addCase(loadOrder.fulfilled, (state, action) => {
-        const { order } = action.payload;
-        state[order.id] = order;
-      })*/
       // Load order list success
       .addCase(loadOrders.fulfilled, (state, action) => {
         const { orders } = action.payload;

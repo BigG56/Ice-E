@@ -58,29 +58,29 @@ function ProductDetails() {
   return (
     <section className="product-details-container">
       <div className="product-img-container">
-        <img src={product.img} alt='product' className="prodImg"></img>
+        <img src={product.img} alt='product' id="prodImg"></img>
       </div>
       <div className="product-info-container">
         { product &&
-          <>
-            <Typography style={{fontFamily:'Rightous, cursive', textDecoration: 'underline'}} variant="h3">{product?.name}</Typography>
+          <div className="product-info-container">
+            <Typography id="prodTitle" style={{fontFamily:'Rightous, cursive', textDecoration: 'underline'}} variant="h3">{product?.name}</Typography>
             <Typography variant="h6">{product?.description}</Typography>
             <Typography id='price' variant="h2">£<b>{product?.price}</b></Typography>
             { !loggedIn &&
-            <Button type="contained" id='view' component={Link} to ='/products' color="primary">Back</Button>
+              <Button type="contained" id='view' component={Link} to ='/products' color="primary">Back</Button>
             }
             { loggedIn &&
-            <div className='buttons'>          
-              <Incrementer
-                onDecrement={handleDecrement}
-                onIncrement={handleIncrement}
-                value={quantity}
-              />
-              <Button type="contained" id='view' onClick={handleAddToCart} color="primary">Add to Cart</Button>
-              <Button type="contained" id='view' component={Link} to ={`/users/${user.id}/products`} color="primary">Back</Button>
-            </div>
+              <div className='buttons'>          
+                <Incrementer
+                  onDecrement={handleDecrement}
+                  onIncrement={handleIncrement}
+                  value={quantity}
+                />
+                <Button type="contained" id='view' onClick={handleAddToCart} color="primary">Add to Cart</Button>
+                <Button type="contained" id='view' component={Link} to ={`/users/${user.id}/products`} color="primary">Back</Button>
+              </div>
             } 
-          </>
+          </div>
         }
       </div>
     </section>

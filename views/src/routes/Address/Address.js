@@ -1,111 +1,11 @@
-/*import React from 'react';
-import { Form, Formik } from 'formik';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import Button from '@mui/material/Button';
-import TextField from '../../components/TextField/TextField';
-import './Address.css';
-import { addAddress } from '../../store/user/Users.actions';
-
-import * as Yup from 'yup';
-
-const DeliveryAddress = () => {
-  const history = useNavigate();
-  const dispatch = useDispatch();
-  const { userId } = useParams();
-
-
-  // Registration handler
-  const handleAddress = async (credentials) => {
-    try {
-      console.log(credentials)
-      await dispatch(addAddress(credentials));
-      
-      history('/users');
-    } catch(err) {
-      throw err;
-    }
-  }
-
-  // Validation schema for registration form
-  const addressSchema = Yup.object().shape({
-    addressline1: Yup.string()
-      .required("addressline1 is required."),
-
-    aaddressline2: Yup.string()
-      .required("addressline2 is required."),
-
-    city: Yup.string()
-      .required("city is required."),
-
-    county: Yup.string()
-      .required("county is required."),
-
-    postcode: Yup.string()
-      .required("postcode is required.")
-  })
-
-  return (
-    <div className="regForm">
-      <div className="formComp">
-        <div className="formWrapper">
-          <Formik
-            initialValues={{addressline1: "", addressline2: "", city: "", county: "", postcode: ""}}
-            validationSchema={addressSchema}
-            validateOnBlur
-            onSubmit={async (data) => {
-              const { addressline1, addressline2, city, county, postcode } = data;
-              await handleAddress({userId, addressline1, addressline2, city, county, postcode});
-            }}
-          >
-            <Form className="baseForm">
-              <header className="baseFormHeader">
-                <h1 className="baseFormHeading">Delivery</h1>
-              </header>
-              <TextField
-                label="Addressline1"
-                name="addressline1"
-                id="addressline1-input"
-              />
-              <TextField
-                label="Addressline2"
-                name="addressline2"
-                id="addressline2-input"
-              />
-              <TextField
-                label="City"
-                name="city"
-                id="city-input"
-              />
-              <TextField
-                label="County"
-                name="county"
-                id="county-input"
-              />
-              <TextField
-                label="Postcode"
-                name="postcode"
-                type="postcode"
-              />
-              <Button variant="contained" type="submit" style={{backgroundColor: "black", color: "turquoise", border: "2px solid turquoise"}}>Submit</Button>
-            </Form>
-          </Formik>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default DeliveryAddress;*/
-
 import React from 'react';
 import { Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import TextField from '../../components/TextField/TextField';
 import './Address.css';
-import { addAddress, updateDetails } from '../../store/user/Users.actions';
+import { addAddress } from '../../store/user/Users.actions';
 
 import * as Yup from 'yup';
 

@@ -3,6 +3,7 @@
     background-color:black;
     color:turquoise;
 }
+
 .header-bar {
     display:flex;
     justify-content: space-between;

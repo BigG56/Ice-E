@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import TextField from '../../components/TextField/TextField';
 import './UpdateDetailsForm.css';
-import { addAddress, updateDetails } from '../../store/user/Users.actions';
+import { updateDetails } from '../../store/user/Users.actions';
 
 import * as Yup from 'yup';
 

@@ -6,7 +6,7 @@ export const checkLoginStatus = createAsyncThunk(
   async (userId, thunkAPI) => {
     try {
       const response = await isLoggedIn(userId);
-      console.log(response);
+      //console.log(response);
 
       return {
         address: response.address,
@@ -15,6 +15,7 @@ export const checkLoginStatus = createAsyncThunk(
         loggedIn: true
       }
     } catch(err) {
+      console.error(err)
       throw err;
     }
   }
@@ -49,7 +50,7 @@ export const registerUser = createAsyncThunk(
       await register(credentials);
       return {};
     } catch(err) {
-      console.error(err);
+      console.error(err)
       throw err;
     }
   }

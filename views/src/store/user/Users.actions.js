@@ -11,6 +11,7 @@ export const updateDetails = createAsyncThunk(
           user: response
         }
       } catch(err) {
+        console.error(err);
         throw err;
       }
     }
@@ -26,6 +27,7 @@ export const addAddress = createAsyncThunk(
           delivery: response
         }
       } catch(err) {
+        console.error(err);
         throw err;
       }
     }
@@ -41,6 +43,7 @@ export const fetchAddress = createAsyncThunk(
         delivery: response
       }
     } catch(err) {
+      console.error(err);
       throw err;
     }
   }

@@ -45,7 +45,7 @@ function CartItemCard(props) {
       <div className="cart-item-container">
         <div className="cart-item-details">
           <p style={{width:"200px"}}>{name}</p>
-          <img alt="product" className="prodImg"src={img} />
+          <img alt="product" className="cartImg"src={img} />
         </div>
         <div className="cart-item-increment">
         <p style={{color:"black", backgroundColor: "turquoise", marginBottom: "5px"}} onClick={update}>Update</p>

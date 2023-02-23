@@ -9,7 +9,14 @@
     margin:10px;
     border-radius:10px;
 }
-.price {
+
+@media only screen and (max-width: 640px) {
+    .product-info-container {
+        font-size:15px;
+    }
+}
+
+#price {
     border:2px solid black;
     border-radius:20px;
     background-color:turquoise;
@@ -17,10 +24,28 @@
 
 }
 
-.prodImg {
-    height: 300px;
-    width: 300px;
+@media only screen and (max-width: 640px) {
+    #price {
+        font-size:40px;
+    }
+    
+    #prodTitle {
+        font-size:40px;
+    }
+}
+
+#prodImg {
+    height: 400px;
+    width: 400px;
     border:3px solid turquoise;
+    border-radius:20px;
+}
+
+@media only screen and (max-width: 640px) {
+    #prodImg {
+        height:200px;
+        width:200px;
+    }
 }
 
 .product-details-container {

@@ -10,7 +10,7 @@ export const loadOrderItems = createAsyncThunk(
           orderItems: response
       }
       } catch(err) {
-        console.log(err);
+        console.error(err);
         throw err;
       }
     }

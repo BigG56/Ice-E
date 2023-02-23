@@ -11,6 +11,7 @@ export const loadOrders = createAsyncThunk(
         orders: response
     }
     } catch(err) {
+      console.error(err);
       throw err;
     }
   }

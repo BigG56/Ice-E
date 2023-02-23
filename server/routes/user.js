@@ -17,9 +17,11 @@ module.exports = (app) => {
       //console.log(userId);
       const cart = await CartServiceInstance.loadCart(userId);
       const user = await UserServiceInstance.get({id: userId});
+      const address = await UserServiceInstance.getAddress({userid: userId})
     
       res.status(200).json({
         cart,
+        address,
         user
       });
     } catch(err) {

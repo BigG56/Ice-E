@@ -13,7 +13,6 @@ const OrderCard = (props) => {
   const user  = useSelector(state => state.user);
   const {delivery} = useSelector(state => state.user);
   const itemTotal = total / 100;
-  //const orderItems = useSelector(state => state.orderItems);
   
 
   return (

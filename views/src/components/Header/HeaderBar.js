@@ -1,6 +1,6 @@
 import './HeaderBar.css';
 import React from'react';
-import {IconButton} from '@mui/material';
+import { IconButton } from '@mui/material';
 import { Link} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Badge from '@mui/material/Badge';
