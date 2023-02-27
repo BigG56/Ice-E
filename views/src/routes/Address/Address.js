@@ -34,7 +34,7 @@ const AddressForm = () => {
   })
 
   return (
-    <div className="regForm">
+    <div className="addForm">
       <div className="formComp">
         <div className="formWrapper">
           <Formik
