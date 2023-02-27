@@ -35,7 +35,7 @@ export const removeFromCart = async (cartitemid) => {
     throw err.response.data;
   }
 }
-
+// API interface for updating the users cart item
 export const updateCartItem = async (updatedItem) => {
   try {
     const response = await API.put(`/users/:userId/carts/:cartId/items/:cartitemid`, updatedItem);

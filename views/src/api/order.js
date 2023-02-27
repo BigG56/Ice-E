@@ -11,7 +11,7 @@ export const fetchOrders = async (userId) => {
     throw err.response.data;
   }
 }
-
+// API interface for fetching order items
 export const fetchOrderItems = async (orderId) => {
   try {
     const response = await API.get(`/users/:userId/orders/${orderId}`);

@@ -38,7 +38,6 @@ const Register = () => {
     }
   }
 
-  // Validation schema for registration form
   const registrationSchema = Yup.object().shape({
     email: Yup.string()
       .email("Invalid email address.")

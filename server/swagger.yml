@@ -262,7 +262,7 @@ paths:
           description: Error
       tags:
         - CreateCart
-  users/:userId/carts/:cartId/:
+  /users/:userId/carts/:cartId/:
     summary: add item to cart
     description: adds a item to user cart
     post:
@@ -347,7 +347,7 @@ paths:
           description: Error
       tags:
         - Checkout
-  /user/:userId/orders/:
+  /users/:userId/orders/:
     summary: gets order
     description: gets order by user
     get:

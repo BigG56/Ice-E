@@ -15,7 +15,6 @@ const UpdateDetails = () => {
   const user = useSelector(state => state.user);
   const { userId } = useParams()
 
-  // Registration handler
   const handleUpdate = async (credentials) => {
     try {
       await dispatch(updateDetails(credentials));
@@ -26,7 +25,6 @@ const UpdateDetails = () => {
     }
   }
 
-  // Validation schema for registration form
   const updateSchema = Yup.object().shape({
     userName: Yup.string(),
     firstname: Yup.string(),

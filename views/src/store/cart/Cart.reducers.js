@@ -18,7 +18,7 @@ const cartSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-    //Add item success
+      //Add item success
       .addCase(addItem.fulfilled, (state, action) => {
         const { item } = action.payload;
         state.cart.items.push(item);

@@ -1,5 +1,5 @@
 import API from './client';
-
+// API interface for fetching user
 export const fetchUser = async (userId) => {
     try {
       const response = await API.get(`users/${userId}`);
@@ -22,7 +22,7 @@ export const updateUser = async (credentials) => {
       throw err.response.data;
     }
 }
-
+// API interface for fetching user delivery address
 export const getAddress = async (credentials) => {
   try {
     console.log(credentials)
@@ -34,7 +34,7 @@ export const getAddress = async (credentials) => {
     throw err.response.data;
   }
 }
-
+// API interface for creating delivery address
 export const createAddress = async (credentials) => {
   try {
     console.log(credentials)

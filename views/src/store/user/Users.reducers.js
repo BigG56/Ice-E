@@ -32,7 +32,7 @@ const userSlice = createSlice({
         const { delivery } = action.payload;
         Object.assign(state.delivery, delivery);
       })
-      // Check login status success
+      //Check login status success
       .addCase(checkLoginStatus.fulfilled, (state, action) => {
         const { user, address } = action.payload;
         Object.assign(state, user);
