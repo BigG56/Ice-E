@@ -32,7 +32,7 @@ const UpdateDetails = () => {
   })
 
   return (
-    <div className="regForm">
+    <div className="updForm">
       <div className="formComp">
         <div className="formWrapper">
           <Formik
