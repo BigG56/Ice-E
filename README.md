@@ -17,15 +17,9 @@ Start front-end - In the /views folder run npm install into the terminal to down
 ![Use Case Diagram](/views/src/resources/ERD.jpg)
 
 ## Future features:
-<<<<<<< HEAD
 -Creating a way for the app to send a email confirmation after successfull purchase.
 -Creating a button to change the app color system to black and white for color blind users.
 -Creating a text reader to read text out loud for the users hard of seeing.
-=======
-- Creating a way for the app to send a email confirmation after successfull purchase.
-- Creating a button to change the app color system to black and white for color blind users.
-- Creating a text reader to read text out loud for the users hard of seeing.
->>>>>>> 302d4ad602b917a87cef8f5a9364e8dd7d68fb3f
 
 ## Technologies:
 React

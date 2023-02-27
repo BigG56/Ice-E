@@ -15,7 +15,6 @@ const AddressForm = () => {
   const user = useSelector(state => state.user);
   const { userId } = useParams()
 
-  // Registration handler
   const handleAddress = async (credentials) => {
     try {
       await dispatch(addAddress(credentials));
@@ -26,7 +25,6 @@ const AddressForm = () => {
     }
   }
 
-  // Validation schema for registration form
   const addressSchema = Yup.object().shape({
     addressline1: Yup.string(),
     addressline2: Yup.string(),
@@ -36,7 +34,7 @@ const AddressForm = () => {
   })
 
   return (
-    <div className="regForm">
+    <div className="addForm">
       <div className="formComp">
         <div className="formWrapper">
           <Formik
